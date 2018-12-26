@@ -1,0 +1,137 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Jonas Dahl</title>
+	<link rel="stylesheet" href="../style.css" type="text/css" />
+	<script src="https://use.fontawesome.com/196102e831.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript">
+		function lengthPassed(t) { // Hur många procent av sträckan bör vi ha färdats vid T=t?
+			if (t < 0.5) {
+				return 4 * t * t * t
+			} else {
+				return (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+			}
+		}
+
+		function scrollTo(element, from, to, totalDuration, t) {
+		    if (t >= totalDuration) return;
+
+			let totalWay = to - from
+			let passedWay = totalWay * lengthPassed(t / totalDuration)
+			element.scrollTop = from + passedWay
+
+		    setTimeout(function() {
+		        if (element.scrollTop >= to) return;
+		        scrollTo(element, from, to, totalDuration, t + 10);
+		    }, 10);
+		}
+
+		document.addEventListener("DOMContentLoaded", function() {
+			document.getElementById('cv-link').addEventListener('click', function () {
+				scrollTo(document.body, document.body.scrollTop, document.getElementById('cv').offsetTop + 10, 200, 0)
+				return false
+			})
+
+			document.addEventListener('scroll', function () {
+				console.log('Scroll')
+				if (document.body.scrollTop > 10) {
+					document.getElementById('language').className = 'language swedish scrolled'
+				} else {
+					document.getElementById('language').className = 'language swedish'
+				}
+				return false
+			})
+		}, false);
+	</script>
+</head>
+<body>
+	<div class="language swedish" id="language">
+		<a href=".."><span></span></a>
+	</div>
+	<div class="photo-cred">
+		Photo by me
+	</div>
+	<div class="contact">
+		<div class="middle">
+			<h1>Jonas Dahl</h1>
+			<p>Studying computer science at the Royal Institute of Technology, Stockholm (KTH).</p>
+			<ul>
+				<li><i class="fa fa-phone"></i> +46 70-796 48 83</li>
+				<li><i class="fa fa-envelope"></i> <span>jonas</span>@<span>jdahl.se</span></li>
+				<li><i class="fa fa-github"></i> <a href="https://github.com/jonasdahl">jonasdahl</a></li>
+				<li><i class="fa fa-globe"></i> <a href="http://jdahl.se">jdahl.se</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="down">
+		<a href="#cv" id="cv-link" onclick="return false;"><i class="fa fa-chevron-down"></i></a>
+	</div>
+	<div id="cv"></div>
+	<div class="cv">
+		<h1>Jonas <span class="print-only">Dahl</span></h1>
+		<span class="sub-cv">CV</span>
+		<ul class="info print-only">
+			<li><i class="fa fa-phone"></i> 070-796 48 83 <i class="fa fa-envelope"></i> <span>jonas</span>@<span>jdahl.se</span></li>
+			<li></li>
+			<li><i class="fa fa-home"></i> Kungshamra 3, 170 70 Solna</li>
+			<li><i class="fa fa-globe"></i> <a href="http://jdahl.se">jdahl.se</a> <i class="fa fa-github"></i> <a href="https://github.com/jonasdahl">jonasdahl</a></li>
+		</ul>
+		<h2><i class="fa fa-graduation-cap"></i> Education</h2>
+		<ul>
+			<li>
+				<span class="time">august 2013 - present</span>
+				<h3>Degree programme in Computer Science <span class="points">(300 ETCS)</span></h3>
+				<span class="location">Royal Institute of Technology, KTH (Stockholm)</span>
+				<span class="description">
+					Master in Computer Science. Specialization Software Technology with the subtrack Programming Languages. Course list and First Cycle Degree Project is available on request. Graduating june 2018.
+				</span>
+			</li>
+			<li>
+				<span class="time">august 2010 - june 2013</span>
+				<h3>Natural science programme</h3>
+				<span class="location">Hersby gymnasium</span>
+				<span class="description">Upper secondary school focused on math and natural science. Course list is available on request.</span>
+			</li>
+		</ul>
+
+		<h2><i class="fa fa-trophy"></i> Other experiences</h2>
+		<ul>
+			<li>
+				<span class="time">january 2017 - present</span>
+				<h3>Head of the Reception</h3>
+				<span class="location">Konglig Datasektionen</span>
+				<span class="description">
+					Volountary and elected. As head of the Reception of new students at Datasektionen at KTH, I was liable of a staff of 60 persons. We organized activities for the 200 newly admitted students. Financially responsible with a turnover of 1 million SEK.
+				</span>
+			</li>
+			<li>
+				<span class="time">august 2015 - present</span>
+				<h3>Informationsorganet</h3>
+				<span class="location">Konglig Datasektionen</span>
+				<span class="description">Developed different web systems for Datasektionen. See <a href="https://github.com/jonasdahl">Github</a> for detailed projects.</span>
+			</li>
+			<li>
+				<span class="time">august 2015 - june 2016</span>
+				<h3>Teaching assistant</h3>
+				<span class="location">Royal Institute of Technology, KTH</span>
+				<span class="description">Taught and examined computer labs in the course Programming Paradigms.</span>
+			</li>
+			<li>
+				<span class="time">april 2007 - present</span>
+				<h3>Soccer referee</h3>
+				<span class="location">Swedish Football Association</span>
+				<span class="description">Refereeing games in the fourth division as center referee and in the second division as assistant referee. Requires exercising and good leadership together with good rule knowledge. Also played and coached soccer between 2000 and 2016.</span>
+			</li>
+		</ul>
+
+		<h2><i class="fa fa-lightbulb-o"></i> Skills</h2>
+		<p>HTML, CSS, Javascript, React, Node.js, Vue.js, PHP, Laravel, Swift, Java, Scala, MongoDB, MySQL, PostgreSQL, Git, photography, Photoshop.</p>
+		<p>Swedish Driving License.</p>
+
+		<h2><i class="fa fa-globe"></i> Languages</h2>
+		<p>Speaks English and Swedish fluently. Understands Spanish on a basic level.</p>
+		<p class="info">References and course result transcripts are available on request.</p>
+	</div>
+</body>
+</html>
