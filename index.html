@@ -1,134 +1,211 @@
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Jonas Dahl</title>
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<script src="https://use.fontawesome.com/196102e831.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script type="text/javascript">
-		function lengthPassed(t) { // Hur många procent av sträckan bör vi ha färdats vid T=t?
-			if (t < 0.5) {
-				return 4 * t * t * t
-			} else {
-				return (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
-			}
-		}
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jonas Dahl</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="https://use.fontawesome.com/196102e831.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript">
+      function lengthPassed(t) {
+        // Hur många procent av sträckan bör vi ha färdats vid T=t?
+        if (t < 0.5) {
+          return 4 * t * t * t;
+        } else {
+          return (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+        }
+      }
 
-		function scrollTo(element, from, to, totalDuration, t) {
-		    if (t >= totalDuration) return;
+      function scrollTo(element, from, to, totalDuration, t) {
+        if (t >= totalDuration) return;
 
-			let totalWay = to - from
-			let passedWay = totalWay * lengthPassed(t / totalDuration)
-			element.scrollTop = from + passedWay
+        let totalWay = to - from;
+        let passedWay = totalWay * lengthPassed(t / totalDuration);
+        element.scrollTop = from + passedWay;
 
-		    setTimeout(function() {
-		        if (element.scrollTop >= to) return;
-		        scrollTo(element, from, to, totalDuration, t + 10);
-		    }, 10);
-		}
+        setTimeout(function () {
+          if (element.scrollTop >= to) return;
+          scrollTo(element, from, to, totalDuration, t + 10);
+        }, 10);
+      }
 
-		document.addEventListener("DOMContentLoaded", function() {
-			document.getElementById('cv-link').addEventListener('click', function () {
-				scrollTo(document.body, document.body.scrollTop, document.getElementById('cv').offsetTop + 10, 200, 0)
-				return false
-			})
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          document
+            .getElementById("cv-link")
+            .addEventListener("click", function () {
+              scrollTo(
+                document.body,
+                document.body.scrollTop,
+                document.getElementById("cv").offsetTop + 10,
+                200,
+                0
+              );
+              return false;
+            });
 
-			document.addEventListener('scroll', function () {
-				console.log('Scroll')
-				if (document.body.scrollTop > 10) {
-					document.getElementById('language').className = 'language english scrolled'
-				} else {
-					document.getElementById('language').className = 'language english'
-				}
-				return false
-			})
-		}, false);
-	</script>
-</head>
-<body>
-	<div class="language english" id="language">
-		<a href="en"><span></span></a>
-	</div>
-	<div class="contact">
-		<div class="middle">
-			<h1>Jonas Dahl</h1>
-			<p>Civilingenjör i Datateknik på KTH. Software engineer på Yanzi Networks.</p>
-			<ul>
-				<li><i class="fa fa-phone"></i> 070-796 48 83</li>
-				<li><i class="fa fa-envelope"></i> <span>jonas</span>@<span>jdahl.se</span></li>
-				<li><i class="fa fa-github"></i> <a href="https://github.com/jonasdahl">jonasdahl</a></li>
-				<li><i class="fa fa-globe"></i> <a href="http://jdahl.se">jdahl.se</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="down">
-		<a href="#cv" id="cv-link" onclick="return false;"><i class="fa fa-chevron-down"></i></a>
-	</div>
-	<div id="cv"></div>
-	<div class="cv">
-		<h1>Jonas <span class="print-only">Dahl</span></h1>
-		<span class="sub-cv">CV</span>
-		<ul class="info print-only">
-			<li><i class="fa fa-phone"></i> 070-796 48 83 <i class="fa fa-envelope"></i> <span>jonas</span>@<span>jdahl.se</span></li>
-			<li></li>
-			<li><i class="fa fa-home"></i> Kungshamra 3, 170 70 Solna</li>
-			<li><i class="fa fa-globe"></i> <a href="http://jdahl.se">jdahl.se</a> <i class="fa fa-github"></i> <a href="https://github.com/jonasdahl">jonasdahl</a></li>
-		</ul>
-		<h2><i class="fa fa-graduation-cap"></i> Utbildning</h2>
-		<ul>
-			<li>
-				<span class="time">augusti 2013 - nu</span>
-				<h3>Civilingenjörsutbildning i Datateknik <span class="points">(300 hp)</span></h3>
-				<span class="location">Kungliga tekniska högskolan</span>
-				<span class="description">
-					Master i Datalogi med spåret Programvaruteknik och delspåret Programspråk. Kandidatexamensarbete samt kurslista lämnas gärna på begäran. Planerad examen juni 2018.
-				</span>
-			</li>
-			<li>
-				<span class="time">augusti 2010 - juni 2013</span>
-				<h3>Naturvetenskapsprogrammet</h3>
-				<span class="location">Hersby gymnasium</span>
-				<span class="description">Gymnasieutbildning med inriktning natur. Betygsutdrag lämnas gärna på begäran.</span>
-			</li>
-		</ul>
+          document.addEventListener("scroll", function () {
+            console.log("Scroll");
+            if (document.body.scrollTop > 10) {
+              document.getElementById("language").className =
+                "language english scrolled";
+            } else {
+              document.getElementById("language").className =
+                "language english";
+            }
+            return false;
+          });
+        },
+        false
+      );
+    </script>
+  </head>
+  <body>
+    <div class="language english" id="language">
+      <a href="en"><span></span></a>
+    </div>
+    <div class="contact">
+      <div class="middle">
+        <h1>Jonas Dahl</h1>
+        <p>
+          Civilingenjör i Datateknik på KTH. Software engineer på Yanzi
+          Networks.
+        </p>
+        <ul>
+          <li><i class="fa fa-phone"></i> 070-796 48 83</li>
+          <li>
+            <i class="fa fa-envelope"></i> <span>jonas</span>@<span
+              >jdahl.se</span
+            >
+          </li>
+          <li>
+            <i class="fa fa-github"></i>
+            <a href="https://github.com/jonasdahl">jonasdahl</a>
+          </li>
+          <li>
+            <i class="fa fa-globe"></i> <a href="http://jdahl.se">jdahl.se</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="down">
+      <a href="#cv" id="cv-link" onclick="return false;"
+        ><i class="fa fa-chevron-down"></i
+      ></a>
+    </div>
+    <div id="cv"></div>
+    <div class="cv">
+      <h1>Jonas <span class="print-only">Dahl</span></h1>
+      <span class="sub-cv">CV</span>
+      <ul class="info print-only">
+        <li>
+          <i class="fa fa-phone"></i> 070-796 48 83
+          <i class="fa fa-envelope"></i> <span>jonas</span>@<span
+            >jdahl.se</span
+          >
+        </li>
+        <li></li>
+        <li><i class="fa fa-home"></i> Kungshamra 3, 170 70 Solna</li>
+        <li>
+          <i class="fa fa-globe"></i> <a href="http://jdahl.se">jdahl.se</a>
+          <i class="fa fa-github"></i>
+          <a href="https://github.com/jonasdahl">jonasdahl</a>
+        </li>
+      </ul>
 
-		<h2><i class="fa fa-trophy"></i> Övriga meriter</h2>
-		<ul>
-			<li>
-				<span class="time">januari 2017 - nu</span>
-				<h3>Ansvarig för Datasektionens Mottagning</h3>
-				<span class="location">Konglig Datasektionen</span>
-				<span class="description">
-					Ideellt förtroendevald. Ytterst ansvarig för Datasektionens Mottagning av nya studenter vid Kungliga tekniska högskolan med en personal på 60 personer. Organiserade aktiviteter för de 200 nyantagna. Ekonomiskt ansvarig med en omsättning om drygt 1 mnkr.
-				</span>
-			</li>
-			<li>
-				<span class="time">augusti 2015 - nu</span>
-				<h3>Informationsorganet</h3>
-				<span class="location">Konglig Datasektionen</span>
-				<span class="description">Utvecklat diverse system för Datasektionen. Se <a href="https://github.com/jonasdahl">Github</a> för detaljerade projekt.</span>
-			</li>
-			<li>
-				<span class="time">augusti 2015 - juni 2016</span>
-				<h3>Laborationsassistent</h3>
-				<span class="location">Kungliga Tekniska Högskolan</span>
-				<span class="description">Undervisade och examinerade datorlaborationer i kursen Programmeringsparadigm.</span>
-			</li>
-			<li>
-				<span class="time">april 2007 - nu</span>
-				<h3>Fotbollsdomare</h3>
-				<span class="location">Svenska fotbollsförbundet</span>
-				<span class="description">Dömer matcher i herrfotbollens division 4 som huvuddomare och division 2 som assisterande domare. Kräver mycket träning och ledarskap, samt god regelkunskap. Spelade också fotboll mellan 2000 och 2016 där jag även engagerat mig som ledare.</span>
-			</li>
-		</ul>
+      <h2><i class="fa fa-graduation-cap"></i> Utbildning</h2>
+      <ul>
+        <li>
+          <span class="time">augusti 2013 - nu</span>
+          <h3>
+            Civilingenjörsutbildning i Datateknik
+            <span class="points">(300 hp)</span>
+          </h3>
+          <span class="location">Kungliga tekniska högskolan</span>
+          <span class="description">
+            Master i Datalogi med spåret Programvaruteknik och delspåret
+            Programspråk. Kandidatexamensarbete samt kurslista lämnas gärna på
+            begäran. Planerad examen juni 2018.
+          </span>
+        </li>
+        <li>
+          <span class="time">augusti 2010 - juni 2013</span>
+          <h3>Naturvetenskapsprogrammet</h3>
+          <span class="location">Hersby gymnasium</span>
+          <span class="description"
+            >Gymnasieutbildning med inriktning natur. Betygsutdrag lämnas gärna
+            på begäran.</span
+          >
+        </li>
+      </ul>
 
-		<h2><i class="fa fa-lightbulb-o"></i> Kompetenser</h2>
-		<p>HTML, CSS, Javascript, React, Node.js, Vue.js, PHP, Laravel, Swift, Java, Scala, MongoDB, MySQL, PostgreSQL, Git, fotografering, Photoshop.</p>
-		<p>Har svenskt körkort.</p>
+      <h2><i class="fa fa-trophy"></i> Övriga meriter</h2>
+      <ul>
+        <li>
+          <span class="time">januari 2017 - nu</span>
+          <h3>Ansvarig för Datasektionens Mottagning</h3>
+          <span class="location">Konglig Datasektionen</span>
+          <span class="description">
+            Ideellt förtroendevald. Ytterst ansvarig för Datasektionens
+            Mottagning av nya studenter vid Kungliga tekniska högskolan med en
+            personal på 60 personer. Organiserade aktiviteter för de 200
+            nyantagna. Ekonomiskt ansvarig med en omsättning om drygt 1 mnkr.
+          </span>
+        </li>
+        <li>
+          <span class="time">augusti 2015 - nu</span>
+          <h3>Informationsorganet</h3>
+          <span class="location">Konglig Datasektionen</span>
+          <span class="description"
+            >Utvecklat diverse system för Datasektionen. Se
+            <a href="https://github.com/jonasdahl">Github</a> för detaljerade
+            projekt.</span
+          >
+        </li>
+        <li>
+          <span class="time">augusti 2015 - juni 2016</span>
+          <h3>Laborationsassistent</h3>
+          <span class="location">Kungliga Tekniska Högskolan</span>
+          <span class="description"
+            >Undervisade och examinerade datorlaborationer i kursen
+            Programmeringsparadigm.</span
+          >
+        </li>
+        <li>
+          <span class="time">april 2007 - nu</span>
+          <h3>Fotbollsdomare</h3>
+          <span class="location">Svenska fotbollsförbundet</span>
+          <span class="description"
+            >Dömer matcher i herrfotbollens division 4 som huvuddomare och
+            division 2 som assisterande domare. Kräver mycket träning och
+            ledarskap, samt god regelkunskap. Spelade också fotboll mellan 2000
+            och 2016 där jag även engagerat mig som ledare.</span
+          >
+        </li>
+        <li>
+          <h3>Periserve</h3>
+          <span class="description"
+            >Testar <a href="https://remix.run">Remix.run</a> genom att bygga
+            ett <a href="https://periserve.se">bokningssystem</a>.</span
+          >
+        </li>
+      </ul>
 
-		<h2><i class="fa fa-globe"></i> Språk</h2>
-		<p>Talar engelska och svenska flytande. Förstår spanska på en grundläggande nivå.</p>
-		<p class="info">Referenser och betygsutdrag lämnas gärna vid förfrågan.</p>
-	</div>
-</body>
+      <h2><i class="fa fa-lightbulb-o"></i> Kompetenser</h2>
+      <p>
+        HTML, CSS, Javascript, React, Node.js, Vue.js, PHP, Laravel, Swift,
+        Java, Scala, MongoDB, MySQL, PostgreSQL, Git, fotografering, Photoshop.
+      </p>
+      <p>Har svenskt körkort.</p>
+
+      <h2><i class="fa fa-globe"></i> Språk</h2>
+      <p>
+        Talar engelska och svenska flytande. Förstår spanska på en grundläggande
+        nivå.
+      </p>
+      <p class="info">
+        Referenser och betygsutdrag lämnas gärna vid förfrågan.
+      </p>
+    </div>
+  </body>
 </html>
